@@ -1,8 +1,8 @@
 package dev.diogocabral.webookmark.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.diogocabral.webookmark.model.Book
 import dev.diogocabral.webookmark.repository.BookRepository
@@ -10,13 +10,13 @@ import dev.diogocabral.webookmark.repository.database.BooksDatabase
 import kotlinx.coroutines.launch
 
 
-class BookViewModel(application: Application): AndroidViewModel(application) {
+class BookViewModel(context: Context): ViewModel() {
 
     private val repository: BookRepository
     val allBooks: LiveData<List<Book>>
 
     init {
-        val bookDAO = BooksDatabase.getInstance(application).bookDAO()
+        val bookDAO = BooksDatabase.getInstance(context).bookDAO()
         repository = BookRepository(bookDAO)
         allBooks = repository.allBooks
     }

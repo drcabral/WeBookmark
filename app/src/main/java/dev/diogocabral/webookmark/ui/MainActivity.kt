@@ -7,26 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.Book
 
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: BookViewModel
+    private val bookViewModel: BookViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
-
-        viewModel.allBooks.observe(this, Observer { items ->
+        bookViewModel.allBooks.observe(this, Observer { items ->
             if (items.isEmpty()) {
-                viewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", 320))
+                bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", 320))
             }
 
             Log.d("TAG", "ITEMS: $items")
