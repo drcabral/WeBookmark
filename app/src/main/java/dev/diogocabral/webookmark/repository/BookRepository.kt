@@ -3,11 +3,9 @@ package dev.diogocabral.webookmark.repository
 import androidx.lifecycle.LiveData
 import dev.diogocabral.webookmark.model.Book
 
-class BookRepository(private val bookDAO: BookDAO) {
+interface BookRepository {
 
-    val allBooks: LiveData<List<Book>> = bookDAO.getAll()
+    suspend fun insert(book: Book)
 
-    suspend fun insert(book: Book){
-        bookDAO.insert(book)
-    }
+    fun allBooks() : LiveData<List<Book>>
 }

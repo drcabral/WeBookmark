@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         bookViewModel.allBooks.observe(this, Observer { items ->
             if (items.isEmpty()) {
-                bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", 320))
+                bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", "", 320))
             }
 
             Log.d("TAG", "ITEMS: $items")

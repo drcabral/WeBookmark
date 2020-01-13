@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Book(
     var title: String,
     var author: String,
-    // TODO: add image to the book in room database
+    var imagePath: String,
     var pages: Int
 ) {
     @PrimaryKey(autoGenerate = true)
