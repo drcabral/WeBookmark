@@ -22,13 +22,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        bookViewModel.allBooks.observe(this, Observer { items ->
-            if (items.isEmpty()) {
-                bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", "", 320))
-            }
-
-            Log.d("TAG", "ITEMS: $items")
-        })
+        bookViewModel.getAllBooks()
+        observeAllBooksList()
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -37,18 +32,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun observeAllBooksList() {
+        bookViewModel.allBooks.observe(this, Observer { items ->
+            if (items.isEmpty()) {
+                bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", "", 320))
+            }
+
+            Log.d("TAG", "ITEMS: $items")
+        })
     }
 }

@@ -1,7 +1,7 @@
 package dev.diogocabral.webookmark.di
 
 import androidx.room.Room
-import dev.diogocabral.webookmark.repository.BookLocalRepositoryImpl
+import dev.diogocabral.webookmark.repository.BookLocalRepository
 import dev.diogocabral.webookmark.repository.BookRepository
 import dev.diogocabral.webookmark.repository.database.BooksDatabase
 import dev.diogocabral.webookmark.ui.BookViewModel
@@ -24,5 +24,5 @@ val bookModules = module {
         get<BooksDatabase>().bookDAO()
     }
 
-    single<BookRepository> { BookLocalRepositoryImpl(get()) }
+    single<BookRepository> { BookLocalRepository(get()) }
 }
