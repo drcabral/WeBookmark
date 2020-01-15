@@ -10,13 +10,11 @@ import kotlinx.coroutines.launch
 
 class BookViewModel(private val repository: BookRepository): ViewModel() {
 
-    lateinit var allBooks: LiveData<List<Book>>
+    val allBooks: LiveData<List<Book>> by lazy {
+        repository.allBooks()
+    }
 
     fun insert(book: Book) = viewModelScope.launch {
         repository.insert(book)
-    }
-
-    fun getAllBooks() {
-        allBooks = repository.allBooks()
     }
 }
