@@ -12,12 +12,14 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.stopKoin
+import org.koin.test.KoinTest
 import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.Executors
 
 
 @RunWith(RobolectricTestRunner::class)
-class BooksDatabaseTest {
+class BooksDatabaseTest : KoinTest {
 
     private lateinit var database: BooksDatabase
     private lateinit var book: Book
@@ -27,6 +29,8 @@ class BooksDatabaseTest {
 
     @Before
     fun setup() {
+        stopKoin()
+
         database = Room
             .inMemoryDatabaseBuilder(ApplicationProvider.getApplicationContext(), BooksDatabase::class.java)
             .setTransactionExecutor(Executors.newSingleThreadExecutor())
