@@ -65,7 +65,10 @@ dependencies {
     def koin_version = "2.0.1"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    testCompile "org.koin:koin-test:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+
+    // GRApi
+    implementation 'com.github.intmainreturn00:grapi:1.4'
 
     // Test
     testImplementation 'junit:junit:4.12'
