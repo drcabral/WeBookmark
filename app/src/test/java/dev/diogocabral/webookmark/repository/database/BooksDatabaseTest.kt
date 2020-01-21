@@ -12,14 +12,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
 import org.robolectric.RobolectricTestRunner
 import java.util.concurrent.Executors
 
 
 @RunWith(RobolectricTestRunner::class)
-class BooksDatabaseTest : KoinTest {
+class BooksDatabaseTest {
 
     private lateinit var database: BooksDatabase
     private lateinit var book: Book
@@ -29,8 +27,6 @@ class BooksDatabaseTest : KoinTest {
 
     @Before
     fun setup() {
-        stopKoin()
-
         database = Room
             .inMemoryDatabaseBuilder(ApplicationProvider.getApplicationContext(), BooksDatabase::class.java)
             .setTransactionExecutor(Executors.newSingleThreadExecutor())
@@ -40,12 +36,12 @@ class BooksDatabaseTest : KoinTest {
     }
 
     @After
-    fun `close database`() {
+    fun cleanup() {
         database.close()
     }
 
     @Test
-    fun `insert book`() {
+    fun `should insert book`() {
         runBlocking {
             database.bookDAO().insert(book)
         }
@@ -58,7 +54,7 @@ class BooksDatabaseTest : KoinTest {
     }
 
     @Test
-    fun `get all books`() {
+    fun `should get all books`() {
         runBlocking {
             database.bookDAO().insert(book)
             database.bookDAO().insert(book)

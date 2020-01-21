@@ -1,9 +1,11 @@
 package dev.diogocabral.webookmark.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.model.Book
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -19,27 +21,28 @@ class BookLocalRepositoryTest {
 
     @Before
     fun setup() {
-        bookDAO = mockk()
-        book = mockk()
+        bookDAO = mockk(relaxUnitFun = true)
         bookLocalRepository = BookLocalRepository(bookDAO)
+
+        book = Book("A sample book", "Freddie Mercury", "/test.png", 300)
     }
 
     @Test
-    fun `call DAO object to insert in database`() {
-        coEvery { bookLocalRepository.insert(book) } returns Unit
-
+    fun `should call DAO object to insert in database`() {
         runBlocking { bookLocalRepository.insert(book) }
 
         coVerify { bookDAO.insert(book) }
     }
 
     @Test
-    fun `call DAO object to get all books in database`() {
-        every { bookLocalRepository.allBooks() } returns mockk()
+    fun `should get list of books from database when calling DAO object`() {
+        val bookLiveData = MutableLiveData<List<Book>>(listOf(book))
 
-        bookLocalRepository.allBooks()
+        every { bookDAO.getAll() } returns bookLiveData
 
-        verify { bookDAO.getAll() }
+        assertEquals(bookLiveData, bookLocalRepository.allBooks())
+
+
     }
 
 }

@@ -11,7 +11,9 @@ class BookViewModel(private val repository: BookRepository): ViewModel() {
 
     fun allBooks() = repository.allBooks()
 
-    fun insert(book: Book) = viewModelScope.launch {
-        repository.insert(book)
+    fun insert(book: Book) {
+        viewModelScope.launch {
+            repository.insert(book)
+        }
     }
 }

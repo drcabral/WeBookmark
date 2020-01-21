@@ -1,8 +1,8 @@
 package dev.diogocabral.webookmark.ui
 
+import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.model.Book
 import dev.diogocabral.webookmark.repository.BookRepository
-import dev.diogocabral.webookmark.testUtils.observeOnce
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -13,6 +13,7 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -29,9 +30,10 @@ class BookViewModelTest {
     fun setup() {
         Dispatchers.setMain(dispatcher)
 
-        bookRepository = mockk()
-        book = mockk()
+        bookRepository = mockk(relaxUnitFun = true)
         bookViewModel = BookViewModel(bookRepository)
+
+        book = Book("A sample book", "Freddie Mercury", "/test.png", 300)
     }
 
     @After
@@ -40,23 +42,18 @@ class BookViewModelTest {
     }
 
     @Test
-    fun `get all books from repository`() {
-        every { bookViewModel.allBooks() } returns mockk()
+    fun `should insert book with repository function`() {
+        bookViewModel.insert(book)
 
-        bookViewModel.allBooks()
-
-        verify { bookRepository.allBooks() }
+        coVerify { bookRepository.insert(book) }
     }
 
     @Test
-    fun `insert book with repository`() {
-        every { bookViewModel.insert(book) } returns mockk()
+    fun `should get a list of all books from repository`() {
+        val bookLiveData = MutableLiveData<List<Book>>(listOf(book))
 
-        bookViewModel.insert(book)
+        every { bookViewModel.allBooks() } returns bookLiveData
 
-        coVerify {
-            bookRepository.insert(book)
-        }
+        assertEquals(bookLiveData, bookViewModel.allBooks())
     }
-
 }
