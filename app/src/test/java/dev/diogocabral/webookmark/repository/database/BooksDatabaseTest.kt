@@ -40,12 +40,12 @@ class BooksDatabaseTest : KoinTest {
     }
 
     @After
-    fun closeDatabase() {
+    fun `close database`() {
         database.close()
     }
 
     @Test
-    fun insertBook() {
+    fun `insert book`() {
         runBlocking {
             database.bookDAO().insert(book)
         }
@@ -58,7 +58,7 @@ class BooksDatabaseTest : KoinTest {
     }
 
     @Test
-    fun getAllBooks() {
+    fun `get all books`() {
         runBlocking {
             database.bookDAO().insert(book)
             database.bookDAO().insert(book)

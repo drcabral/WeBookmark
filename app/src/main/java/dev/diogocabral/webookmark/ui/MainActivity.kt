@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeAllBooksList() {
-        bookViewModel.allBooks.observe(this, Observer { items ->
+        bookViewModel.allBooks().observe(this, Observer { items ->
             if (items.isEmpty()) {
                 bookViewModel.insert(Book("Piquenique na estrada", "Irmãos Strugatsky", "", 320))
             }

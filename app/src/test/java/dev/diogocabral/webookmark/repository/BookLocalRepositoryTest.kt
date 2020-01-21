@@ -25,7 +25,7 @@ class BookLocalRepositoryTest {
     }
 
     @Test
-    fun callDaoObjectToInsertInDatabase() {
+    fun `call DAO object to insert in database`() {
         coEvery { bookLocalRepository.insert(book) } returns Unit
 
         runBlocking { bookLocalRepository.insert(book) }
@@ -34,7 +34,7 @@ class BookLocalRepositoryTest {
     }
 
     @Test
-    fun callDaoObjectToGetAllBooksInDatabase() {
+    fun `call DAO object to get all books in database`() {
         every { bookLocalRepository.allBooks() } returns mockk()
 
         bookLocalRepository.allBooks()
