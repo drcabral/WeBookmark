@@ -31,7 +31,7 @@ android {
             apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
             buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_KEY'])
         } else {
-            buildConfigField("String", "GOOGLE_BOOKS_API_KEY", System.getEnv('GOOGLE_BOOKS_API_KEY'))
+            buildConfigField("String", "GOOGLE_BOOKS_API_KEY", System.getenv('GOOGLE_BOOKS_API_KEY'))
         }
 
         buildConfigField "String", "GOOGLE_BOOKS_API_URL", "\"https://www.googleapis.com/books/v1/\""
