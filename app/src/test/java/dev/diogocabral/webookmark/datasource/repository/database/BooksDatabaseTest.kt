@@ -1,4 +1,4 @@
-package dev.diogocabral.webookmark.repository.database
+package dev.diogocabral.webookmark.datasource.repository.database
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room

@@ -3,8 +3,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 28
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "dev.diogocabral.webookmark"
         minSdkVersion 24
@@ -15,10 +23,14 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [
-                        "room.incremental":"true"
+                        "room.incremental":"true",
+                        "room.schemaLocation": "$projectDir/schemas".toString()
                 ]
             }
         }
+
+        buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_URL'])
+        buildConfigField "String", "GOOGLE_BOOKS_API_URL", "\"https://www.googleapis.com/books/v1/\""
     }
     buildTypes {
         release {
@@ -67,8 +79,10 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
 
-    // GRApi
-    implementation 'com.github.intmainreturn00:grapi:1.4'
+    // Retrofit2
+    def retrofit_version = "2.7.1"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
     // Test
     testImplementation 'junit:junit:4.12'

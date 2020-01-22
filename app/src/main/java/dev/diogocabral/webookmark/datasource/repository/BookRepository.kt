@@ -1,4 +1,4 @@
-package dev.diogocabral.webookmark.repository
+package dev.diogocabral.webookmark.datasource.repository
 
 import androidx.lifecycle.LiveData
 import dev.diogocabral.webookmark.model.Book

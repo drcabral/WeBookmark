@@ -3,7 +3,7 @@ package dev.diogocabral.webookmark.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.diogocabral.webookmark.model.Book
-import dev.diogocabral.webookmark.repository.BookRepository
+import dev.diogocabral.webookmark.datasource.repository.BookRepository
 import kotlinx.coroutines.launch
 
 

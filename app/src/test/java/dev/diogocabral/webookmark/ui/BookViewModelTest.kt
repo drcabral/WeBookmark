@@ -2,11 +2,10 @@ package dev.diogocabral.webookmark.ui
 
 import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.model.Book
-import dev.diogocabral.webookmark.repository.BookRepository
+import dev.diogocabral.webookmark.datasource.repository.BookRepository
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher

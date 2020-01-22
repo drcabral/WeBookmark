@@ -1,7 +1,9 @@
-package dev.diogocabral.webookmark.repository
+package dev.diogocabral.webookmark.datasource
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
+import dev.diogocabral.webookmark.datasource.repository.BookDAO
+import dev.diogocabral.webookmark.datasource.repository.BookLocalRepository
 import dev.diogocabral.webookmark.model.Book
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
@@ -22,7 +24,10 @@ class BookLocalRepositoryTest {
     @Before
     fun setup() {
         bookDAO = mockk(relaxUnitFun = true)
-        bookLocalRepository = BookLocalRepository(bookDAO)
+        bookLocalRepository =
+            BookLocalRepository(
+                bookDAO
+            )
 
         book = Book("A sample book", "Freddie Mercury", "/test.png", 300)
     }
