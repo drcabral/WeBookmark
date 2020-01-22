@@ -3,10 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def apikeyPropertiesFile = rootProject.file("apikey.properties")
-def apikeyProperties = new Properties()
-apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
-
 android {
     compileSdkVersion 28
     compileOptions {
@@ -29,7 +25,15 @@ android {
             }
         }
 
-        buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_KEY'])
+        if (project.rootProject.file('apikey.properties').exists()) {
+            def apikeyPropertiesFile = rootProject.file("apikey.properties")
+            def apikeyProperties = new Properties()
+            apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+            buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_KEY'])
+        } else {
+            buildConfigField("String", "GOOGLE_BOOKS_API_KEY", System.getEnv('GOOGLE_BOOKS_API_KEY'))
+        }
+
         buildConfigField "String", "GOOGLE_BOOKS_API_URL", "\"https://www.googleapis.com/books/v1/\""
     }
     buildTypes {
