@@ -37,6 +37,9 @@ cache:
 before_script:
   - chmod +x gradlew
 
-script:
-  - make build
-  - make run-unit-tests
+jobs:
+  include:
+    - stage: build
+      script: make build
+    - stage: unit tests
+      script: make run-unit-tests
