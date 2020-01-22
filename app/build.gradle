@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: "../ktlint.gradle"
 
 android {
     compileSdkVersion 28
@@ -87,6 +88,9 @@ dependencies {
     def retrofit_version = "2.7.1"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    // Ktlint
+    ktlint "com.pinterest:ktlint:0.35.0"
 
     // Test
     testImplementation 'junit:junit:4.12'

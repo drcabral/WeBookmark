@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import dev.diogocabral.webookmark.model.Book
 import dev.diogocabral.webookmark.testUtils.observeOnce
+import java.util.concurrent.Executors
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -13,8 +14,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import java.util.concurrent.Executors
-
 
 @RunWith(RobolectricTestRunner::class)
 class BooksDatabaseTest {

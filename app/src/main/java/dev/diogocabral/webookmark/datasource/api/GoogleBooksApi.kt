@@ -6,5 +6,4 @@ interface GoogleBooksApi {
 
     @GET("volumes?q=intitle")
     fun getBooksByTitle() {}
-
 }

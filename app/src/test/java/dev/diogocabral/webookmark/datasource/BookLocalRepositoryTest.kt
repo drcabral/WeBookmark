@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.datasource.repository.BookDAO
 import dev.diogocabral.webookmark.datasource.repository.BookLocalRepository
 import dev.diogocabral.webookmark.model.Book
-import io.mockk.*
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -46,8 +48,5 @@ class BookLocalRepositoryTest {
         every { bookDAO.getAll() } returns bookLiveData
 
         assertEquals(bookLiveData, bookLocalRepository.allBooks())
-
-
     }
-
 }

@@ -1,8 +1,8 @@
 package dev.diogocabral.webookmark.ui
 
 import androidx.lifecycle.MutableLiveData
-import dev.diogocabral.webookmark.model.Book
 import dev.diogocabral.webookmark.datasource.repository.BookRepository
+import dev.diogocabral.webookmark.model.Book
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk

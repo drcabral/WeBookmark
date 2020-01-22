@@ -42,7 +42,9 @@ stages:
   - unit tests
 jobs:
   include:
-    - stage: build
-      script: make build
-    - stage: unit tests
+    - stage: Android Lint
+      script: make android-lint
+    - stage: Kotlin Lint
+      script: make kotlin-lint
+    - stage: Unit Tests
       script: make run-unit-tests

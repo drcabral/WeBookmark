@@ -7,5 +7,5 @@ interface BookRepository {
 
     suspend fun insert(book: Book)
 
-    fun allBooks() : LiveData<List<Book>>
+    fun allBooks(): LiveData<List<Book>>
 }

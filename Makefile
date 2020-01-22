@@ -9,6 +9,19 @@ run-instrumented-tests: start-emulator disable-animations
 	./gradlew connectedAndroidTest --info
 
 # =================================================================================
+# LINT
+# =================================================================================
+
+android-lint:
+	./gradlew lint
+
+kotlin-lint:
+	./gradlew app:ktlint
+
+kotlin-lint-fix:
+	./gradlew app:ktlintFormat
+
+# =================================================================================
 # USEFUL COMMANDS
 # =================================================================================
 

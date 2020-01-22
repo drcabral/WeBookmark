@@ -2,12 +2,11 @@ package dev.diogocabral.webookmark.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.diogocabral.webookmark.model.Book
 import dev.diogocabral.webookmark.datasource.repository.BookRepository
+import dev.diogocabral.webookmark.model.Book
 import kotlinx.coroutines.launch
 
-
-class BookViewModel(private val repository: BookRepository): ViewModel() {
+class BookViewModel(private val repository: BookRepository) : ViewModel() {
 
     fun allBooks() = repository.allBooks()
 

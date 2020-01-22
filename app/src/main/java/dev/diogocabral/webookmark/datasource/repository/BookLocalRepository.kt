@@ -10,7 +10,7 @@ class BookLocalRepository(private val bookDAO: BookDAO) :
         bookDAO.insert(book)
     }
 
-    override fun allBooks() : LiveData<List<Book>> {
+    override fun allBooks(): LiveData<List<Book>> {
         return bookDAO.getAll()
     }
 }

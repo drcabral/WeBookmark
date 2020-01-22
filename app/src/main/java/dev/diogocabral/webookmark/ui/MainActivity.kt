@@ -2,14 +2,13 @@ package dev.diogocabral.webookmark.ui
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.Book
-
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

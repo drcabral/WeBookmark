@@ -38,7 +38,7 @@ fun provideDatabase(context: Context): BooksDatabase {
         .build()
 }
 
-fun provideBookDao(booksDatabase: BooksDatabase) : BookDAO {
+fun provideBookDao(booksDatabase: BooksDatabase): BookDAO {
     return booksDatabase.bookDAO()
 }
 
