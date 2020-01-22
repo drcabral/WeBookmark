@@ -29,7 +29,7 @@ android {
             }
         }
 
-        buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_URL'])
+        buildConfigField("String", "GOOGLE_BOOKS_API_KEY", apikeyProperties['GOOGLE_BOOKS_API_KEY'])
         buildConfigField "String", "GOOGLE_BOOKS_API_URL", "\"https://www.googleapis.com/books/v1/\""
     }
     buildTypes {
