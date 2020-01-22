@@ -12,6 +12,9 @@ run-instrumented-tests: start-emulator disable-animations
 # USEFUL COMMANDS
 # =================================================================================
 
+build:
+	./gradlew clean build
+
 download-dependencies:
 	./gradlew androidDependencies
 
