@@ -53,6 +53,6 @@ class BookViewModelTest {
 
         every { bookViewModel.allBooks() } returns bookLiveData
 
-        assertEquals(mockk(), bookViewModel.allBooks())
+        assertEquals(bookLiveData, bookViewModel.allBooks())
     }
 }

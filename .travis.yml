@@ -37,6 +37,9 @@ cache:
 before_script:
   - chmod +x gradlew
 
+stages:
+  - build
+  - unit tests
 jobs:
   include:
     - stage: build
