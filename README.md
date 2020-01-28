@@ -11,7 +11,7 @@ WeBookmark is an app that allows you to keep tracking the books that you're read
 **(List of functionalities will be added soon!)**
 
 More than this, this project contains what I'm calling **modern Android MVVM codebase template**.
-You can find this basic project in release <span style="color:red">(**Will be released soon!**)</span>
+You can find this basic project in **Tag v1.0.0 of this repository**
 
 ## WeBookmark Modern Android MVVM Codebase Template Stack
 
