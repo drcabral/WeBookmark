@@ -1,4 +1,4 @@
-package dev.diogocabral.webookmark.datasource.repository
+package dev.diogocabral.webookmark.datasource.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import dev.diogocabral.webookmark.model.Book
+import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 
 @Dao
 interface BookDAO {

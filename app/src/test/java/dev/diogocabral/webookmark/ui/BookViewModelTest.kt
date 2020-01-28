@@ -1,8 +1,10 @@
 package dev.diogocabral.webookmark.ui
 
 import androidx.lifecycle.MutableLiveData
-import dev.diogocabral.webookmark.datasource.repository.BookRepository
-import dev.diogocabral.webookmark.model.Book
+import dev.diogocabral.webookmark.datasource.Repository
+import dev.diogocabral.webookmark.datasource.api.ApiResponse
+import dev.diogocabral.webookmark.model.localDataSourceModel.Book
+import dev.diogocabral.webookmark.model.remoteDataSourceModel.GoogleBooksApiResponse
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -20,7 +22,7 @@ import org.junit.Test
 class BookViewModelTest {
 
     private lateinit var bookViewModel: BookViewModel
-    private lateinit var bookRepository: BookRepository
+    private lateinit var bookRepository: Repository
     private lateinit var book: Book
 
     private val dispatcher = TestCoroutineDispatcher()
@@ -32,7 +34,12 @@ class BookViewModelTest {
         bookRepository = mockk(relaxUnitFun = true)
         bookViewModel = BookViewModel(bookRepository)
 
-        book = Book("A sample book", "Freddie Mercury", "/test.png", 300)
+        book = Book(
+            "A sample book",
+            "Freddie Mercury",
+            "/test.png",
+            300
+        )
     }
 
     @After
@@ -48,10 +55,19 @@ class BookViewModelTest {
     }
 
     @Test
+    fun `should get books by title from repository`() {
+        val bookApiResponseLiveData = MutableLiveData<ApiResponse<GoogleBooksApiResponse>>()
+
+        every { bookRepository.getBooksByTitle("Encarcerados") } returns bookApiResponseLiveData
+
+        assertEquals(bookApiResponseLiveData, bookViewModel.getBooksByTitle("Encarcerados"))
+    }
+
+    @Test
     fun `should get a list of all books from repository`() {
         val bookLiveData = MutableLiveData<List<Book>>(listOf(book))
 
-        every { bookViewModel.allBooks() } returns bookLiveData
+        every { bookRepository.allBooks() } returns bookLiveData
 
         assertEquals(bookLiveData, bookViewModel.allBooks())
     }

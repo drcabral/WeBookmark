@@ -1,4 +1,4 @@
-package dev.diogocabral.webookmark.model
+package dev.diogocabral.webookmark.model.localDataSourceModel
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

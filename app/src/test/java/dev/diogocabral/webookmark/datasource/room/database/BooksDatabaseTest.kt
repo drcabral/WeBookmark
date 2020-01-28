@@ -1,9 +1,9 @@
-package dev.diogocabral.webookmark.datasource.repository.database
+package dev.diogocabral.webookmark.datasource.room.database
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import dev.diogocabral.webookmark.model.Book
+import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 import dev.diogocabral.webookmark.testUtils.observeOnce
 import java.util.concurrent.Executors
 import kotlinx.coroutines.runBlocking
@@ -31,7 +31,12 @@ class BooksDatabaseTest {
             .setTransactionExecutor(Executors.newSingleThreadExecutor())
             .build()
 
-        book = Book("A sample book", "Freddie Mercury", "/test.png", 300)
+        book = Book(
+            "A sample book",
+            "Freddie Mercury",
+            "/test.png",
+            300
+        )
     }
 
     @After
