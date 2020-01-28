@@ -51,6 +51,7 @@ For Unit Tests:
 
 * <b>JUnit4</b>
 * <b>MockK</b>
+* <b>Robolectric</b>
 
 ### Continuous Integration
 
