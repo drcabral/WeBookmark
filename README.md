@@ -53,6 +53,8 @@ For Unit Tests:
 * <b>MockK</b>
 * <b>Robolectric</b>
 
+The decision here to not use JUnit 5 yet is because I didn't found an official way to work with this version of the framework and the other frameworks that I used for testing in this project.
+
 ### Continuous Integration
 
 This project comes with Travis CI integration, that nowadays is running three steps in a pipeline:
