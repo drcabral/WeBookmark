@@ -22,7 +22,7 @@ The idea here is provide a template for every Android project, from a simple one
 Here is the diagram of the used MVVM architecture:
 
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=18p-JTXaTcErl3YbQ-kMMDIInviYhJ-q0">
+  <img src="https://i.ibb.co/T8Xc80m/We-Bookmark-Diagram.png">
 </p>
 
 There are some key points here for some architectural decisions. For example, i know that for a small project maybe create more classes and code just to apply interfaces between the main repository and the local/remote data access can be more than we really need. But, the idea here is to apply concepts to make easy to expand the project to a large and complex one. Keep it in mind when you are reading the code.
