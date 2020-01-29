@@ -22,7 +22,7 @@ The idea here is provide a template for every Android project, from a simple one
 Here is the diagram of the used MVVM architecture:
 
 <p align="center">
-  <img src="https://doc-14-5g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/bt62jcb2abbi26tsav8hinoqm9lrn3u7/1580220000000/16443675139245670547/*/18p-JTXaTcErl3YbQ-kMMDIInviYhJ-q0?e=view">
+  <img src="https://doc-0k-cc-docs.googleusercontent.com/docs/securesc/sp6rq9g6rlf0lc5rd8109mog2bddotqo/nv829k73tqvmogpai2ee2ap8rodtv8oe/1580306400000/16443675139245670547/09033341888024720997/18p-JTXaTcErl3YbQ-kMMDIInviYhJ-q0?e=view&authuser=1">
 </p>
 
 There are some key points here for some architectural decisions. For example, i know that for a small project maybe create more classes and code just to apply interfaces between the main repository and the local/remote data access can be more than we really need. But, the idea here is to apply concepts to make easy to expand the project to a large and complex one. Keep it in mind when you are reading the code.
@@ -53,7 +53,7 @@ For Unit Tests:
 * <b>MockK</b>
 * <b>Robolectric</b>
 
-The decision here to not use JUnit 5 yet is because I didn't found an official way to work with this version of the framework and the other frameworks that I used for testing in this project.
+The decision here to not use **JUnit 5** yet is because I didn't found an official way to work with this version of the framework and the other frameworks that I used for testing in this project.
 
 ### Continuous Integration
 
