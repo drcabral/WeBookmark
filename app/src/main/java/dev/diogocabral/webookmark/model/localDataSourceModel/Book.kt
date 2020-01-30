@@ -8,7 +8,9 @@ data class Book(
     var title: String,
     var author: String,
     var imagePath: String,
-    var pages: Int
+    var pages: Int,
+    var pagesRead: Int,
+    var percentPagesRead: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

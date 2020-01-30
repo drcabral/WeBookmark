@@ -7,22 +7,28 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.datasource.api.ApiEmptyResponse
 import dev.diogocabral.webookmark.datasource.api.ApiErrorResponse
 import dev.diogocabral.webookmark.datasource.api.ApiSuccessResponse
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
+import dev.diogocabral.webookmark.ui.adapter.UserBooksListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private val bookViewModel: BookViewModel by viewModel()
+    private var userBooksListAdapter: UserBooksListAdapter = UserBooksListAdapter(null, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setupRecyclerView()
 
         observeAllBooksList()
         observeGetBooksByTitle()
@@ -33,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupRecyclerView() {
+        user_books_list.setHasFixedSize(true)
+        user_books_list.adapter = userBooksListAdapter
+    }
+
     private fun observeAllBooksList() {
         bookViewModel.allBooks().observe(this, Observer { items ->
             if (items.isEmpty()) {
@@ -41,12 +52,14 @@ class MainActivity : AppCompatActivity() {
                         "Piquenique na estrada",
                         "Irmãos Strugatsky",
                         "",
-                        320
+                        320,
+                        0,
+                        0
                     )
                 )
             }
 
-            Log.d("TAG", "ITEMS: $items")
+            userBooksListAdapter.updateData(items)
         })
     }
 

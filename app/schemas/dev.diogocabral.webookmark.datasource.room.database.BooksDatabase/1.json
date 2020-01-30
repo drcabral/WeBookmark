@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "1d2e73fbcf1431a76a7517fd549f6d56",
+    "identityHash": "b99a67194f536256c2e802c6b9bfd711",
     "entities": [
       {
         "tableName": "books",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `author` TEXT NOT NULL, `imagePath` TEXT NOT NULL, `pages` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `author` TEXT NOT NULL, `imagePath` TEXT NOT NULL, `pages` INTEGER NOT NULL, `pagesRead` INTEGER NOT NULL, `percentPagesRead` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -37,6 +37,18 @@
             "columnName": "pages",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "pagesRead",
+            "columnName": "pagesRead",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentPagesRead",
+            "columnName": "percentPagesRead",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -52,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1d2e73fbcf1431a76a7517fd549f6d56')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b99a67194f536256c2e802c6b9bfd711')"
     ]
   }
 }
