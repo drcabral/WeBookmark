@@ -50,4 +50,4 @@ jobs:
     - stage: Unit Tests
       script: make run-unit-tests
     - stage: Instrumentation Tests
-      script: make run-instrumentation-tests
+      script: make run-instrumented-tests
