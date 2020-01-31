@@ -4,4 +4,6 @@
     <string name="home_title">What are you going to read today?</string>
     <string name="app_title">WeBookmark</string>
     <string name="helper_text">Click here to search a book and start reading!</string>
+    <string name="search_books">Search books</string>
+    <string name="hint_search_input">fill book title</string>
 </resources>

@@ -21,7 +21,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class BookViewModelTest {
 
-    private lateinit var bookViewModel: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
     private lateinit var bookRepository: Repository
     private lateinit var book: Book
 
@@ -32,7 +32,7 @@ class BookViewModelTest {
         Dispatchers.setMain(dispatcher)
 
         bookRepository = mockk(relaxUnitFun = true)
-        bookViewModel = HomeViewModel(bookRepository)
+        homeViewModel = HomeViewModel(bookRepository)
 
         book = Book(
             "A sample book",
@@ -51,18 +51,9 @@ class BookViewModelTest {
 
     @Test
     fun `should insert book with repository function`() {
-        bookViewModel.insert(book)
+        homeViewModel.insert(book)
 
         coVerify { bookRepository.insert(book) }
-    }
-
-    @Test
-    fun `should get books by title from repository`() {
-        val bookApiResponseLiveData = MutableLiveData<ApiResponse<GoogleBooksApiResponse>>()
-
-        every { bookRepository.getBooksByTitle("Encarcerados") } returns bookApiResponseLiveData
-
-        assertEquals(bookApiResponseLiveData, bookViewModel.getBooksByTitle("Encarcerados"))
     }
 
     @Test
@@ -71,6 +62,6 @@ class BookViewModelTest {
 
         every { bookRepository.allBooks() } returns bookLiveData
 
-        assertEquals(bookLiveData, bookViewModel.allBooks())
+        assertEquals(bookLiveData, homeViewModel.allBooks())
     }
 }

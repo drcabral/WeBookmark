@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
-import kotlinx.android.synthetic.main.cardview_book_item.view.*
+import kotlinx.android.synthetic.main.cardview_book_item.view.book_title
+import kotlinx.android.synthetic.main.cardview_book_item.view.book_authors
+import kotlinx.android.synthetic.main.cardview_book_item.view.book_total_pages
+import kotlinx.android.synthetic.main.cardview_book_item.view.book_pages_read
 
 class UserBooksListAdapter(
-    private val userBookList: List<Book>?,
+    userBookList: List<Book>?,
     private val context: Context
 ) : RecyclerView.Adapter<UserBooksListAdapter.ViewHolder>() {
 
