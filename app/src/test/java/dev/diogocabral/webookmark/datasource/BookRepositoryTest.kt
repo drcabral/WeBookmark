@@ -41,7 +41,9 @@ class BookRepositoryTest {
             "A sample book",
             "Freddie Mercury",
             "/test.png",
-            300
+            300,
+            0,
+            0
         )
 
         googleBooksApiResponse = mockk()

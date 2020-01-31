@@ -1,10 +1,10 @@
-package dev.diogocabral.webookmark
+package dev.diogocabral.webookmark.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.content.Intent
-import dev.diogocabral.webookmark.ui.MainActivity
+import dev.diogocabral.webookmark.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

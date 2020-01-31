@@ -1,10 +1,11 @@
-package dev.diogocabral.webookmark.ui
+package dev.diogocabral.webookmark.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.datasource.Repository
 import dev.diogocabral.webookmark.datasource.api.ApiResponse
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 import dev.diogocabral.webookmark.model.remoteDataSourceModel.GoogleBooksApiResponse
+import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -38,7 +39,9 @@ class BookViewModelTest {
             "A sample book",
             "Freddie Mercury",
             "/test.png",
-            300
+            300,
+            0,
+            0
         )
     }
 
