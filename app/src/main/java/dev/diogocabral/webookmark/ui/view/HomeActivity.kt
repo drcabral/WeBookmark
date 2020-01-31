@@ -10,14 +10,14 @@ import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 import dev.diogocabral.webookmark.ui.adapter.UserBooksListAdapter
 import dev.diogocabral.webookmark.ui.utils.ActivityRequestCodes
-import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
+import dev.diogocabral.webookmark.ui.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    private val bookViewModel: BookViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModel()
     private var userBooksListAdapter: UserBooksListAdapter = UserBooksListAdapter(null, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +28,17 @@ class HomeActivity : AppCompatActivity() {
         setupLocalBooksListView()
 
         observeAllBooksList()
-//        observeGetBooksByTitle()
+
         setupAddButtonListener()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code) {
+            if (resultCode == Activity.RESULT_OK) {
                 val book = data?.getSerializableExtra("selectedBook") as Book?
-                book?.let { bookViewModel.insert(it) }
+                book?.let { homeViewModel.insert(it) }
             }
         }
     }
@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun observeAllBooksList() {
-        bookViewModel.allBooks().observe(this, Observer { items ->
+        homeViewModel.allBooks().observe(this, Observer { items ->
             if (items.isNotEmpty()) {
                 handleLocalBooksListViewVisibility(items)
             }
@@ -64,22 +64,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupAddButtonListener() {
         add_book_button.setOnClickListener {
-            val intent = Intent(this, SearchBookActivity::class.java)
+            val intent = Intent(this, SearchActivity::class.java)
             startActivityForResult(intent, ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code)
         }
     }
-
-//    private fun observeGetBooksByTitle() {
-//        bookViewModel.getBooksByTitle("Encarcerados").observe(this, Observer { response ->
-//            when (response) {
-//                is ApiErrorResponse -> showToastMessage(response.errorMessage)
-//                is ApiEmptyResponse -> showToastMessage("empty response")
-//                is ApiSuccessResponse -> showToastMessage(response.body.books[0].bookInfo.authors.toString())
-//            }
-//        })
-//    }
-//
-//    private fun showToastMessage(message: String) {
-//        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-//    }
 }

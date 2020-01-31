@@ -14,7 +14,8 @@ import dev.diogocabral.webookmark.datasource.room.BookDAO
 import dev.diogocabral.webookmark.datasource.room.LocalDataSource
 import dev.diogocabral.webookmark.datasource.room.RoomDataSource
 import dev.diogocabral.webookmark.datasource.room.database.BooksDatabase
-import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
+import dev.diogocabral.webookmark.ui.viewmodel.HomeViewModel
+import dev.diogocabral.webookmark.ui.viewmodel.SearchViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,7 +23,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val bookModules = module {
-    viewModel { BookViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 
     single { provideDatabase(get()) }
     single { provideBookDao(get()) }

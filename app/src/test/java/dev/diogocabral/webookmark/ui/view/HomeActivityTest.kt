@@ -25,6 +25,5 @@ class HomeActivityTest {
         assertNotNull(homeActivity.user_books_list.adapter)
     }
 
-    //TODO: Test livedata observation behavior after it returns value
-
+    // TODO: Test livedata observation behavior after it returns value
 }

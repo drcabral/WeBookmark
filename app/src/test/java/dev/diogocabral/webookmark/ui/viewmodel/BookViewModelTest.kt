@@ -21,7 +21,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class BookViewModelTest {
 
-    private lateinit var bookViewModel: BookViewModel
+    private lateinit var bookViewModel: HomeViewModel
     private lateinit var bookRepository: Repository
     private lateinit var book: Book
 
@@ -32,7 +32,7 @@ class BookViewModelTest {
         Dispatchers.setMain(dispatcher)
 
         bookRepository = mockk(relaxUnitFun = true)
-        bookViewModel = BookViewModel(bookRepository)
+        bookViewModel = HomeViewModel(bookRepository)
 
         book = Book(
             "A sample book",

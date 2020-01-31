@@ -9,7 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.ui.view.HomeActivity
-import dev.diogocabral.webookmark.ui.view.SearchBookActivity
+import dev.diogocabral.webookmark.ui.view.SearchActivity
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -36,7 +36,6 @@ class HomeActivityTest {
     fun shouldStartSearchBookActivityWhenClickingOnPlusFloatingButton() {
         onView(withId(R.id.add_book_button)).perform(click())
 
-        Intents.intended(hasComponent(SearchBookActivity::class.java.name))
+        Intents.intended(hasComponent(SearchActivity::class.java.name))
     }
-
 }
