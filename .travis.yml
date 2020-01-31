@@ -49,3 +49,5 @@ jobs:
       script: make kotlin-lint
     - stage: Unit Tests
       script: make run-unit-tests
+    - stage: Instrumentation Tests
+      script: make run-instrumentation-tests

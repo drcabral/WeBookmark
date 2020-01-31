@@ -57,19 +57,21 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.747" />
+            app:layout_constraintVertical_bias="0.829" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.812"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/helper_textview"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic_arrow_top_right" />
+            app:srcCompat="@drawable/ic_arrow_top_right"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintWidth_percent="0.2"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
