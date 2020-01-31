@@ -1,9 +1,9 @@
-package dev.diogocabral.webookmark.ui
+package dev.diogocabral.webookmark.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import dev.diogocabral.webookmark.R
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val handle = Handler()
 
         handle.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)

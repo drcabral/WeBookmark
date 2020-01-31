@@ -31,20 +31,20 @@ class UserBooksListAdapter(
         currentBook?.let { holder.bindView(it) }
     }
 
-    fun updateData(newData: List<Book>){
+    fun updateData(newData: List<Book>) {
         this.data = newData
         notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @SuppressLint("SetTextI18n")
-        fun bindView(item: Book){
+        fun bindView(item: Book) {
             itemView.book_title.text = item.title
             itemView.book_authors.text = item.author
             itemView.book_total_pages.text = "${item.pages} pages"
 
-            val percentageRead = item.pagesRead/item.pages * 100
-            itemView.book_pages_read.text = "${percentageRead}% read"
+            val percentageRead = item.pagesRead / item.pages * 100
+            itemView.book_pages_read.text = "$percentageRead% read"
 
             // SETUP IMAGE WITH GLIDE
         }

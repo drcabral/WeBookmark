@@ -14,7 +14,7 @@ import dev.diogocabral.webookmark.datasource.room.BookDAO
 import dev.diogocabral.webookmark.datasource.room.LocalDataSource
 import dev.diogocabral.webookmark.datasource.room.RoomDataSource
 import dev.diogocabral.webookmark.datasource.room.database.BooksDatabase
-import dev.diogocabral.webookmark.ui.BookViewModel
+import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

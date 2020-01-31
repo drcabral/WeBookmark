@@ -1,4 +1,4 @@
-package dev.diogocabral.webookmark.ui
+package dev.diogocabral.webookmark.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

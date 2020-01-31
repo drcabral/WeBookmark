@@ -9,18 +9,18 @@ import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 import dev.diogocabral.webookmark.ui.adapter.UserBooksListAdapter
 import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private val bookViewModel: BookViewModel by viewModel()
     private var userBooksListAdapter: UserBooksListAdapter = UserBooksListAdapter(null, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         setupLocalBooksListView()
 
