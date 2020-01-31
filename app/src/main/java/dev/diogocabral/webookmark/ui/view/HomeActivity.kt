@@ -1,16 +1,18 @@
 package dev.diogocabral.webookmark.ui.view
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.google.android.material.snackbar.Snackbar
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
 import dev.diogocabral.webookmark.ui.adapter.UserBooksListAdapter
+import dev.diogocabral.webookmark.ui.utils.ActivityRequestCodes
 import dev.diogocabral.webookmark.ui.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.content_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -20,16 +22,24 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         setContentView(R.layout.activity_home)
 
         setupLocalBooksListView()
 
         observeAllBooksList()
 //        observeGetBooksByTitle()
+        setupAddButtonListener()
+    }
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code){
+            if(resultCode == Activity.RESULT_OK){
+                val book = data?.getSerializableExtra("selectedBook") as Book?
+                book?.let { bookViewModel.insert(it) }
+            }
         }
     }
 
@@ -50,6 +60,13 @@ class HomeActivity : AppCompatActivity() {
         helper_container.visibility = View.GONE
         user_books_list.visibility = View.VISIBLE
         userBooksListAdapter.updateData(books)
+    }
+
+    private fun setupAddButtonListener() {
+        add_book_button.setOnClickListener {
+            val intent = Intent(this, SearchBookActivity::class.java)
+            startActivityForResult(intent, ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code)
+        }
     }
 
 //    private fun observeGetBooksByTitle() {
