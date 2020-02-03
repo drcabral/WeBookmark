@@ -1,6 +1,12 @@
 package dev.diogocabral.webookmark.ui.view
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,16 +14,10 @@ import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.datasource.api.ApiEmptyResponse
 import dev.diogocabral.webookmark.datasource.api.ApiErrorResponse
 import dev.diogocabral.webookmark.datasource.api.ApiSuccessResponse
+import dev.diogocabral.webookmark.ui.adapter.ResultBooksListAdapter
 import dev.diogocabral.webookmark.ui.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_search_book.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.content.Intent
-import android.app.Activity
-import android.content.Context
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import dev.diogocabral.webookmark.ui.adapter.ResultBooksListAdapter
 
 class SearchActivity : AppCompatActivity() {
 
@@ -50,7 +50,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setUpBackButtonListener() {
-        img_button_back.setOnClickListener{
+        img_button_back.setOnClickListener {
             val intent = Intent()
             setResult(Activity.RESULT_OK, intent)
             finish()
@@ -73,7 +73,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun handleUserConfirmSearchInput(view: View, actionId: Int): Boolean {
         var handled = false
-        if(actionId == EditorInfo.IME_ACTION_DONE) {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
             view.let { v ->
                 val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
                 inputMethodManager?.hideSoftInputFromWindow(v.windowToken, 0)

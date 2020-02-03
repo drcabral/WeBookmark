@@ -2,9 +2,7 @@ package dev.diogocabral.webookmark.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.datasource.Repository
-import dev.diogocabral.webookmark.datasource.api.ApiResponse
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
-import dev.diogocabral.webookmark.model.remoteDataSourceModel.GoogleBooksApiResponse
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
