@@ -10,9 +10,9 @@ WeBookmark is an app that allows you to keep tracking the books that you're read
 
 Here are the list of functionalities that this app provides:
 
-:heavy_check_mark: Search books from Google Books API
-:heavy_check_mark: Select book from result list and save it locally
-:white_check_mark: Update book reading percentage
+[x] Search books from Google Books API
+[x] Select book from result list and save it locally
+[ ] Update book reading percentage
 
 More than this, this project contains what I'm calling **modern Android MVVM codebase template**.
 You can find this basic project in **Tag v1.0.0 of this repository**
