@@ -5,4 +5,4 @@ import java.io.Serializable
 
 data class ImageLinks(
     @SerializedName("thumbnail") val imagePath: String
-): Serializable
+) : Serializable

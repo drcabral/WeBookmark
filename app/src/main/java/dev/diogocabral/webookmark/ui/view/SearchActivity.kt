@@ -21,8 +21,6 @@ import dev.diogocabral.webookmark.ui.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_search_book.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-
 class SearchActivity : AppCompatActivity() {
 
     private val searchViewModel: SearchViewModel by viewModel()

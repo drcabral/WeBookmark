@@ -1,11 +1,15 @@
 package dev.diogocabral.webookmark.ui.viewmodel
 
+import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import dev.diogocabral.webookmark.datasource.Repository
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
+import dev.diogocabral.webookmark.model.remoteDataSourceModel.BookResponseInfo
+import dev.diogocabral.webookmark.ui.utils.BookMapper
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkStatic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -22,6 +26,7 @@ class BookViewModelTest {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var bookRepository: Repository
     private lateinit var book: Book
+    private lateinit var bookResponseInfo: BookResponseInfo
 
     private val dispatcher = TestCoroutineDispatcher()
 
@@ -40,6 +45,13 @@ class BookViewModelTest {
             0,
             0
         )
+
+        bookResponseInfo = BookResponseInfo(
+            "A sample Book",
+            listOf("Freddie Mercury"),
+            null,
+            300
+        )
     }
 
     @After
@@ -49,9 +61,14 @@ class BookViewModelTest {
 
     @Test
     fun `should insert book with repository function`() {
-        homeViewModel.insert(book)
+        mockkStatic(TextUtils::class)
+        every { TextUtils.join(",", bookResponseInfo.authors) } returns "Freddie Mercury"
 
-        coVerify { bookRepository.insert(book) }
+        val mappedBook = BookMapper.mapBookResponseInfoToBook(bookResponseInfo)
+
+        homeViewModel.insert(bookResponseInfo)
+
+        coVerify { bookRepository.insert(mappedBook) }
     }
 
     @Test

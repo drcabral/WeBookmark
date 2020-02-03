@@ -45,7 +45,7 @@ class ResultBooksListAdapter(
             val bookInfo = item.bookInfo
 
             itemView.book_title.text = bookInfo.title
-            itemView.book_authors.text =  TextUtils.join(",", bookInfo.authors)
+            itemView.book_authors.text = TextUtils.join(",", bookInfo.authors)
             itemView.book_total_pages.text = "${bookInfo.pages} pages"
 
             itemView.book_pages_read.visibility = View.GONE
@@ -59,7 +59,7 @@ class ResultBooksListAdapter(
             }
 
             itemView.setOnClickListener {
-                if(context is SearchActivity){
+                if (context is SearchActivity) {
                     context.showSelectionDialogConfirmation(bookInfo)
                 }
             }
