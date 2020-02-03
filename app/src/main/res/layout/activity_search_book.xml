@@ -68,4 +68,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/books_title_input" />
 
+    <TextView
+        android:id="@+id/selection_helper_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/josefin_sans_semibold"
+        android:textColor="#0F4C81"
+        android:textSize="18sp"
+        android:text="@string/select_book_helper"
+        app:layout_constraintBottom_toTopOf="@+id/result_books_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/books_title_input" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

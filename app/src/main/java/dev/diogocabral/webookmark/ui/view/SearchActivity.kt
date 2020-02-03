@@ -8,16 +8,20 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.datasource.api.ApiEmptyResponse
 import dev.diogocabral.webookmark.datasource.api.ApiErrorResponse
 import dev.diogocabral.webookmark.datasource.api.ApiSuccessResponse
+import dev.diogocabral.webookmark.model.remoteDataSourceModel.BookResponseInfo
 import dev.diogocabral.webookmark.ui.adapter.ResultBooksListAdapter
 import dev.diogocabral.webookmark.ui.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_search_book.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+
 
 class SearchActivity : AppCompatActivity() {
 
@@ -86,5 +90,26 @@ class SearchActivity : AppCompatActivity() {
         }
 
         return handled
+    }
+
+    private fun finishActivityWithResult(bookResponseInfo: BookResponseInfo) {
+        val resultIntent = intent
+        resultIntent.putExtra("selectedBook", bookResponseInfo)
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
+    }
+
+    fun showSelectionDialogConfirmation(bookResponseInfo: BookResponseInfo) {
+        AlertDialog.Builder(this)
+                .setTitle("Confirm book selection")
+                .setMessage("Would you like to add ${bookResponseInfo.title} to your book reading list?")
+                .setPositiveButton(android.R.string.yes) { dialog, _ ->
+                    finishActivityWithResult(bookResponseInfo)
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.no) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
     }
 }

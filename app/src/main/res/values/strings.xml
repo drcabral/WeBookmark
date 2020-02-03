@@ -6,4 +6,5 @@
     <string name="helper_text">Click here to search a book and start reading!</string>
     <string name="search_books">Search books</string>
     <string name="hint_search_input">fill book title</string>
+    <string name="select_book_helper">Click in one book to save it to your list!</string>
 </resources>

@@ -14,7 +14,8 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".ui.view.SearchActivity"></activity>
+        <activity android:name=".ui.view.SearchActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".ui.view.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

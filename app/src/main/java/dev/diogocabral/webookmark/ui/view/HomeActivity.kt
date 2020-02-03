@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.localDataSourceModel.Book
+import dev.diogocabral.webookmark.model.remoteDataSourceModel.BookResponseInfo
 import dev.diogocabral.webookmark.ui.adapter.UserBooksListAdapter
 import dev.diogocabral.webookmark.ui.utils.ActivityRequestCodes
 import dev.diogocabral.webookmark.ui.viewmodel.HomeViewModel
@@ -37,8 +38,8 @@ class HomeActivity : AppCompatActivity() {
 
         if (requestCode == ActivityRequestCodes.SEARCH_ACTIVITY_CODE.code) {
             if (resultCode == Activity.RESULT_OK) {
-                val book = data?.getSerializableExtra("selectedBook") as Book?
-                book?.let { homeViewModel.insert(it) }
+                val bookResponseInfo = data?.getSerializableExtra("selectedBook") as BookResponseInfo?
+                bookResponseInfo?.let { homeViewModel.insert(it) }
             }
         }
     }

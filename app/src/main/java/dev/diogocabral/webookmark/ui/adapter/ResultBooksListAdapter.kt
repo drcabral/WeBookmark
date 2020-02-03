@@ -2,6 +2,7 @@ package dev.diogocabral.webookmark.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import dev.diogocabral.webookmark.R
 import dev.diogocabral.webookmark.model.remoteDataSourceModel.BookResponse
+import dev.diogocabral.webookmark.ui.view.SearchActivity
 import kotlinx.android.synthetic.main.cardview_book_item.view.*
 
 class ResultBooksListAdapter(
@@ -43,7 +45,7 @@ class ResultBooksListAdapter(
             val bookInfo = item.bookInfo
 
             itemView.book_title.text = bookInfo.title
-            itemView.book_authors.text = bookInfo.authors.toString()
+            itemView.book_authors.text =  TextUtils.join(",", bookInfo.authors)
             itemView.book_total_pages.text = "${bookInfo.pages} pages"
 
             itemView.book_pages_read.visibility = View.GONE
@@ -54,6 +56,12 @@ class ResultBooksListAdapter(
                     .placeholder(R.drawable.ic_webookmark)
                     .dontAnimate()
                     .into(itemView.book_image)
+            }
+
+            itemView.setOnClickListener {
+                if(context is SearchActivity){
+                    context.showSelectionDialogConfirmation(bookInfo)
+                }
             }
         }
     }
